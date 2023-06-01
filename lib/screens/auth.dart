@@ -36,6 +36,7 @@ class _AuthScreenState extends State<AuthScreen> {
 
           print(userCredentials);
         } on FirebaseAuthException catch (error) {
+          print(error);
           if (error.code == 'email-already-in-use') {
             //...
           }

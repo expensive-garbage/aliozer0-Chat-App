@@ -17,7 +17,10 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      return web;
+      throw UnsupportedError(
+        'DefaultFirebaseOptions have not been configured for web - '
+        'you can reconfigure this by running the FlutterFire CLI again.',
+      );
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
@@ -25,7 +28,10 @@ class DefaultFirebaseOptions {
       case TargetPlatform.iOS:
         return ios;
       case TargetPlatform.macOS:
-        return macos;
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for macos - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
       case TargetPlatform.windows:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for windows - '
@@ -43,15 +49,6 @@ class DefaultFirebaseOptions {
     }
   }
 
-  static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyAXXTNy-Ze1IGMfOn8YaABwO5--vLBaWxw',
-    appId: '1:955146734110:web:accffb3e3c987aca6d7c0f',
-    messagingSenderId: '955146734110',
-    projectId: 'flutter-chat-app-ba35d',
-    authDomain: 'flutter-chat-app-ba35d.firebaseapp.com',
-    storageBucket: 'flutter-chat-app-ba35d.appspot.com',
-  );
-
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyDkHUrNJ004pQOD_-pDzt20VBf48j3VP0k',
     appId: '1:955146734110:android:1e32071335b1a1016d7c0f',
@@ -67,14 +64,5 @@ class DefaultFirebaseOptions {
     projectId: 'flutter-chat-app-ba35d',
     storageBucket: 'flutter-chat-app-ba35d.appspot.com',
     iosBundleId: 'com.example.chatApp',
-  );
-
-  static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyDo0m_g9zIsQnBZ3jF3b7xY8DGD5bC7A8U',
-    appId: '1:955146734110:ios:216393ec99c5e4566d7c0f',
-    messagingSenderId: '955146734110',
-    projectId: 'flutter-chat-app-ba35d',
-    storageBucket: 'flutter-chat-app-ba35d.appspot.com',
-    iosBundleId: 'com.example.chatApp.RunnerTests',
   );
 }

@@ -26,6 +26,8 @@ class _AuthScreenState extends State<AuthScreen> {
     if (_isValid) {
       _form.currentState!.save();
 
+      print(_enteredEmail);
+      print(_enteredPassword);
       if (_isLogin) {
         //log users in
       } else {
@@ -34,8 +36,8 @@ class _AuthScreenState extends State<AuthScreen> {
               await _firebase.createUserWithEmailAndPassword(
                   email: _enteredEmail, password: _enteredPassword);
 
-          print(userCredentials);
         } on FirebaseAuthException catch (error) {
+          
           print(UserCredential);
           print(error);
           if (error.code == 'email-already-in-use') {
